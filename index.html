@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TurboWit — Apps for Drivers</title>
+<meta name="description" content="TurboWit develops apps for car enthusiasts. Record your drives, explore your routes, and make every journey memorable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f8f8f6;
+    --gray-light: #e8e8e4;
+    --gray-mid: #9a9a94;
+    --accent: #1a1a1a;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--mono);
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Chess pattern background */
+  .chess-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    opacity: 0.025;
+    background-image:
+      repeating-conic-gradient(var(--black) 0% 25%, transparent 0% 50%);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(248,248,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    font-weight: 300;
+    color: var(--gray-mid);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--gray-mid);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 2.5rem;
+    max-width: 900px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .hero-sub {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--gray-mid);
+    max-width: 480px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-rule {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 40vh;
+    background: linear-gradient(to bottom, transparent, var(--gray-light), transparent);
+  }
+
+  /* APPS SECTION */
+  .section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-light);
+  }
+
+  /* App cards */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--gray-light);
+    border: 1px solid var(--gray-light);
+  }
+
+  .app-card {
+    background: var(--white);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.25s;
+  }
+
+  .app-card:hover { background: var(--black); }
+
+  .app-card-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gray-light);
+    margin-bottom: 2rem;
+    transition: color 0.25s;
+  }
+
+  .app-card:hover .app-card-num { color: #444; }
+
+  .app-card-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    transition: border-color 0.25s;
+  }
+
+  .app-card:hover .app-card-icon { border-color: #333; }
+
+  .app-card-name {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+    transition: color 0.25s;
+  }
+
+  .app-card:hover .app-card-name { color: var(--white); }
+
+  .app-card-desc {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--gray-mid);
+    letter-spacing: 0.04em;
+    transition: color 0.25s;
+  }
+
+  .app-card:hover .app-card-desc { color: #777; }
+
+  .app-card-tag {
+    display: inline-block;
+    margin-top: 2rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--gray-light);
+    color: var(--gray-mid);
+    transition: border-color 0.25s, color 0.25s;
+  }
+
+  .app-card:hover .app-card-tag {
+    border-color: #333;
+    color: #666;
+  }
+
+  .app-card-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  /* PHILOSOPHY */
+  .philosophy {
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    padding: 6rem 3rem;
+    position: relative;
+    z-index: 1;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .philosophy-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .philosophy-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 2.5rem;
+  }
+
+  .philosophy-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--white);
+  }
+
+  .philosophy-quote em {
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .philosophy-body {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 2;
+    color: #777;
+    letter-spacing: 0.04em;
+  }
+
+  .philosophy-body p + p { margin-top: 1.5rem; }
+
+  /* CONTACT / FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--gray-light);
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gray-light);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-info {
+    text-align: right;
+  }
+
+  .footer-email {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--gray-mid);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+  }
+
+  .footer-email:hover { color: var(--black); }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--black); }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--gray-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.8s ease both; }
+  .hero-title   { animation: fadeUp 0.8s 0.1s ease both; }
+  .hero-sub     { animation: fadeUp 0.8s 0.2s ease both; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero-rule { display: none; }
+    .philosophy-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .philosophy { padding: 4rem 1.5rem; }
+    footer { padding: 3rem 1.5rem 2rem; flex-direction: column; align-items: flex-start; }
+    .footer-info { text-align: left; }
+    .footer-links { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chess-bg" aria-hidden="true"></div>
+
+<nav>
+  <a href="/" class="nav-logo">Turbo<span>Wit</span></a>
+  <ul class="nav-links">
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#philosophy">About</a></li>
+    <li><a href="mailto:hello@turbowit.com">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">TurboWit — Kyoto, Japan</div>
+  <h1 class="hero-title">
+    Apps for drivers<br>who <em>remember</em><br>every road.
+  </h1>
+  <p class="hero-sub">
+    We build tools for car enthusiasts —<br>
+    to record drives, explore routes,<br>
+    and turn every journey into something lasting.
+  </p>
+  <div class="hero-rule" aria-hidden="true"></div>
+</section>
+
+<section class="section" id="apps">
+  <div class="section-label">Our apps</div>
+
+  <div class="apps-grid">
+    <a href="https://cacherecord.vercel.app" class="app-card-link" target="_blank" rel="noopener">
+      <div class="app-card">
+        <div class="app-card-num">01</div>
+        <div class="app-card-icon">⬛</div>
+        <div class="app-card-name">CacheRecord</div>
+        <p class="app-card-desc">
+          GPS drive logger for car enthusiasts.<br>
+          Record, pin, and revisit every route.<br>
+          Your journeys become your archive.
+        </p>
+        <span class="app-card-tag">PWA · Web App</span>
+      </div>
+    </a>
+
+    <div class="app-card">
+      <div class="app-card-num">02</div>
+      <div class="app-card-icon">🎵</div>
+      <div class="app-card-name">RetroSpecAna</div>
+      <p class="app-card-desc">
+        Spectrum analyzer for audiophiles.<br>
+        Visualize music in real time.<br>
+        Android app.
+      </p>
+      <span class="app-card-tag">Android · Coming Soon</span>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-num">03</div>
+      <div class="app-card-icon">◻️</div>
+      <div class="app-card-name">More to come</div>
+      <p class="app-card-desc">
+        We are building tools slowly<br>
+        and with care. One at a time.<br>
+        Stay tuned.
+      </p>
+      <span class="app-card-tag">In Development</span>
+    </div>
+  </div>
+</section>
+
+<div class="philosophy" id="philosophy">
+  <div class="philosophy-inner">
+    <div>
+      <div class="philosophy-label">Our philosophy</div>
+      <blockquote class="philosophy-quote">
+        "Build slowly.<br>Build <em>honestly</em>.<br>Build things you<br>love yourself."
+      </blockquote>
+    </div>
+    <div class="philosophy-body">
+      <p>
+        TurboWit is a one-person studio based in Kyoto, Japan,
+        building apps for drivers and enthusiasts.
+      </p>
+      <p>
+        We don't chase trends. We build tools we'd use ourselves —
+        obsessing over details that most apps overlook.
+      </p>
+      <p>
+        Every product is designed to last. No dark patterns,
+        no unnecessary complexity. Just well-made software
+        for people who care about the craft.
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">TurboWit</div>
+  <div class="footer-info">
+    <a href="mailto:hello@turbowit.com" class="footer-email">hello@turbowit.com</a>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/legal">Legal</a>
+    </div>
+    <div class="footer-copy">© 2026 Turbo Wit. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

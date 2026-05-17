@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特定商取引法に基づく表記 — TurboWit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0a0a0a;
+    --white: #f8f8f6;
+    --gray-light: #e8e8e4;
+    --gray-mid: #9a9a94;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+  }
+  body {
+    font-family: var(--mono);
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.8;
+  }
+  nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(248,248,246,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-light);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-logo span { font-weight: 300; color: var(--gray-mid); }
+  .nav-back {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--black); }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 5rem 3rem 8rem;
+  }
+
+  .page-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .updated {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--gray-mid);
+    letter-spacing: 0.08em;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--gray-light);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #444;
+    letter-spacing: 0.03em;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f2f2ee;
+    color: var(--black);
+    font-weight: 400;
+    width: 30%;
+    white-space: nowrap;
+  }
+
+  a {
+    color: var(--black);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  p {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 2;
+    color: #666;
+    margin-top: 2rem;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .container { padding: 3rem 1.5rem 5rem; }
+    th { width: 38%; white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Turbo<span>Wit</span></a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="container">
+  <div class="page-label">Legal</div>
+  <h1>特定商取引法に基づく表記</h1>
+  <p class="updated">最終更新日：2026年5月17日</p>
+
+  <table>
+    <tr>
+      <th>販売業者</th>
+      <td>Turbo Wit</td>
+    </tr>
+    <tr>
+      <th>代表者</th>
+      <td>（請求があった場合、遅滞なく開示します）</td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td>〒600-8223<br>京都府京都市下京区七条通油小路東入大黒町227番地<br>第２キョートビル402</td>
+    </tr>
+    <tr>
+      <th>お問い合わせ</th>
+      <td><a href="mailto:hello@turbowit.com">hello@turbowit.com</a></td>
+    </tr>
+    <tr>
+      <th>販売URL</th>
+      <td><a href="https://turbowit.com">https://turbowit.com</a></td>
+    </tr>
+    <tr>
+      <th>販売価格</th>
+      <td>各アプリのサービス内に記載の価格（消費税込み）</td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td>クレジットカード（Stripe経由）、その他アプリ内課金</td>
+    </tr>
+    <tr>
+      <th>支払時期</th>
+      <td>ご購入時に即時決済</td>
+    </tr>
+    <tr>
+      <th>サービス提供時期</th>
+      <td>決済完了後、即時にサービスをご利用いただけます</td>
+    </tr>
+    <tr>
+      <th>返品・キャンセルについて</th>
+      <td>
+        デジタルコンテンツの性質上、原則として返品・返金はお受けできません。<br>
+        ただし、システム障害等により正常にサービスをご提供できなかった場合は、
+        個別にご対応いたします。
+      </td>
+    </tr>
+    <tr>
+      <th>動作環境</th>
+      <td>
+        CacheRecord：主要ブラウザ（Chrome, Safari, Firefox 最新版）<br>
+        RetroSpecAna：Android 8.0以上
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    ※ 現在、当サービスの主要機能は無料でご利用いただけます。
+    有料サービスを提供する際は、本ページを更新いたします。
+  </p>
+
+</div>
+
+</body>
+</html>
