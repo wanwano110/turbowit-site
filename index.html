@@ -209,7 +209,7 @@
     font-family: var(--mono);
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: #aaa;
+    color: var(--gray-light);
     margin-bottom: 2rem;
     transition: color 0.25s;
   }
@@ -348,7 +348,7 @@
     font-family: var(--serif);
     font-size: 2.5rem;
     font-weight: 300;
-    color: #aaa;
+    color: var(--gray-light);
     letter-spacing: 0.05em;
   }
 
@@ -408,11 +408,61 @@
   .hero-title   { animation: fadeUp 0.8s 0.1s ease both; }
   .hero-sub     { animation: fadeUp 0.8s 0.2s ease both; }
 
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--black);
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--white);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
   /* Mobile */
   @media (max-width: 768px) {
-  .nav-links { display: none; }
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
     .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
     .hero-rule { display: none; }
     .philosophy-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -436,7 +486,19 @@
     <li><a href="/legal">Legal</a></li>
     <li><a href="mailto:hello@turbowit.com">Contact</a></li>
   </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu" onclick="document.getElementById('mobileMenu').classList.remove('open')">
+  <button class="mobile-menu-close">✕ Close</button>
+  <a href="#apps" onclick="document.getElementById('mobileMenu').classList.remove('open')">Apps</a>
+  <a href="#philosophy" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/legal">Legal</a>
+  <a href="mailto:hello@turbowit.com">Contact</a>
+</div>
 
 <section class="hero">
   <div class="hero-eyebrow">TurboWit — Kyoto, Japan</div>
