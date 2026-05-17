@@ -50,8 +50,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
-    height: 64px;
+    padding: 1.25rem 3rem;
     background: rgba(248,248,246,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--gray-light);
@@ -459,6 +458,32 @@
     cursor: pointer;
   }
 
+  /* Lang toggle */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--gray-light);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+  .lang-toggle button {
+    padding: 0.3rem 0.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-mid);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+  .lang-toggle button.active {
+    background: var(--black);
+    color: var(--white);
+  }
+
   /* Mobile */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -481,15 +506,21 @@
 <nav>
   <a href="/" class="nav-logo">Turbo<span>Wit</span></a>
   <ul class="nav-links">
-    <li><a href="#apps">Apps</a></li>
-    <li><a href="#philosophy">About</a></li>
-    <li><a href="/privacy">Privacy</a></li>
-    <li><a href="/legal">Legal</a></li>
-    <li><a href="mailto:hello@turbowit.com">Contact</a></li>
+    <li><a href="#apps" data-en="Apps" data-ja="アプリ">Apps</a></li>
+    <li><a href="#philosophy" data-en="About" data-ja="について">About</a></li>
+    <li><a href="/privacy" data-en="Privacy" data-ja="プライバシー">Privacy</a></li>
+    <li><a href="/legal" data-en="Legal" data-ja="特商法">Legal</a></li>
+    <li><a href="mailto:hello@turbowit.com" data-en="Contact" data-ja="お問い合わせ">Contact</a></li>
   </ul>
-  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
-  </button>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-ja" onclick="setLang('ja')">JP</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu" onclick="document.getElementById('mobileMenu').classList.remove('open')">
@@ -504,18 +535,22 @@
 <section class="hero">
   <div class="hero-eyebrow">TurboWit — Kyoto, Japan</div>
   <h1 class="hero-title">
-    Apps for drivers<br>who <em>remember</em><br>every road.
+    <span data-en>Apps for drivers<br>who <em>remember</em><br>every road.</span>
+    <span data-ja style="display:none">走った道を、<br>カラスのように<em>記憶する</em>。</span>
   </h1>
   <p class="hero-sub">
-    We build tools for car enthusiasts —<br>
+    <span data-en>We build tools for car enthusiasts —<br>
     to record drives, explore routes,<br>
-    and turn every journey into something lasting.
+    and turn every journey into something lasting.</span>
+    <span data-ja style="display:none">クルマを愛する人のための道具を作っています。<br>
+    走行を記録し、ルートを振り返り、<br>
+    すべての旅を記憶に残す。</span>
   </p>
   <div class="hero-rule" aria-hidden="true"></div>
 </section>
 
 <section class="section" id="apps">
-  <div class="section-label">Our apps</div>
+  <div class="section-label"><span data-en>Our apps</span><span data-ja style="display:none">アプリ一覧</span></div>
 
   <div class="apps-grid">
     <a href="https://cacherecord.vercel.app" class="app-card-link" target="_blank" rel="noopener">
@@ -524,9 +559,8 @@
         <div class="app-card-icon">⬛</div>
         <div class="app-card-name">CacheRecord</div>
         <p class="app-card-desc">
-          GPS drive logger for car enthusiasts.<br>
-          Record, pin, and revisit every route.<br>
-          Your journeys become your archive.
+          <span data-en>GPS drive logger for car enthusiasts.<br>Record, pin, and revisit every route.<br>Your journeys become your archive.</span>
+          <span data-ja style="display:none">ドライブを記録するGPSロガー。<br>ルートをピン留めして振り返る。<br>走った記録が、あなたの歴史になる。</span>
         </p>
         <span class="app-card-tag">PWA · Web App</span>
       </div>
@@ -537,23 +571,21 @@
       <div class="app-card-icon">🎵</div>
       <div class="app-card-name">RetroSpecAna</div>
       <p class="app-card-desc">
-        Spectrum analyzer for audiophiles.<br>
-        Visualize music in real time.<br>
-        Android app.
+        <span data-en>Spectrum analyzer for audiophiles.<br>Visualize music in real time.<br>Android app.</span>
+        <span data-ja style="display:none">音楽好きのためのスペクトラムアナライザー。<br>音楽をリアルタイムで可視化する。<br>Androidアプリ。</span>
       </p>
-      <span class="app-card-tag">Android · Coming Soon</span>
+      <span class="app-card-tag"><span data-en>Android · Coming Soon</span><span data-ja style="display:none">Android · 近日公開</span></span>
     </div>
 
     <div class="app-card">
       <div class="app-card-num">03</div>
       <div class="app-card-icon">◻️</div>
-      <div class="app-card-name">More to come</div>
+      <div class="app-card-name"><span data-en>More to come</span><span data-ja style="display:none">続々開発中</span></div>
       <p class="app-card-desc">
-        We are building tools slowly<br>
-        and with care. One at a time.<br>
-        Stay tuned.
+        <span data-en>We are building tools slowly<br>and with care. One at a time.<br>Stay tuned.</span>
+        <span data-ja style="display:none">丁寧に、一つずつ作っています。<br>焦らず、誠実に。<br>お楽しみに。</span>
       </p>
-      <span class="app-card-tag">In Development</span>
+      <span class="app-card-tag"><span data-en>In Development</span><span data-ja style="display:none">開発中</span></span>
     </div>
   </div>
 </section>
@@ -561,25 +593,23 @@
 <div class="philosophy" id="philosophy">
   <div class="philosophy-inner">
     <div>
-      <div class="philosophy-label">Our philosophy</div>
+      <div class="philosophy-label"><span data-en>Our philosophy</span><span data-ja style="display:none">ものづくりの姿勢</span></div>
       <blockquote class="philosophy-quote">
-        "Build slowly.<br>Build <em>honestly</em>.<br>Build things you<br>love yourself."
+        <span data-en>"Build slowly.<br>Build <em>honestly</em>.<br>Build things you<br>love yourself."</span>
+        <span data-ja style="display:none">「焦らず作る。<br><em>誠実に</em>作る。<br>自分が好きになれる<br>ものを作る。」</span>
       </blockquote>
     </div>
     <div class="philosophy-body">
-      <p>
-        TurboWit is a one-person studio based in Kyoto, Japan,
-        building apps for drivers and enthusiasts.
-      </p>
-      <p>
-        We don't chase trends. We build tools we'd use ourselves —
-        obsessing over details that most apps overlook.
-      </p>
-      <p>
-        Every product is designed to last. No dark patterns,
-        no unnecessary complexity. Just well-made software
-        for people who care about the craft.
-      </p>
+      <span data-en>
+        <p>TurboWit is a one-person studio based in Kyoto, Japan, building apps for drivers and enthusiasts.</p>
+        <p>We don't chase trends. We build tools we'd use ourselves — obsessing over details that most apps overlook.</p>
+        <p>Every product is designed to last. No dark patterns, no unnecessary complexity. Just well-made software for people who care about the craft.</p>
+      </span>
+      <span data-ja style="display:none">
+        <p>TurboWitは京都を拠点とする個人スタジオです。クルマを愛するすべての人のためにアプリを作っています。</p>
+        <p>流行を追いません。自分たちが使いたいと思えるツールだけを、細部にこだわりながら作ります。</p>
+        <p>長く使えるプロダクトを目指しています。ダークパターンなし、余計な複雑さなし。ただ、丁寧に作られたソフトウェアを。</p>
+      </span>
     </div>
   </div>
 </div>
@@ -589,12 +619,30 @@
   <div class="footer-info">
     <a href="mailto:hello@turbowit.com" class="footer-email">hello@turbowit.com</a>
     <div class="footer-links">
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/legal">Legal</a>
+      <a href="/privacy"><span data-en>Privacy Policy</span><span data-ja style="display:none">プライバシーポリシー</span></a>
+      <a href="/legal"><span data-en>Legal</span><span data-ja style="display:none">特商法表記</span></a>
     </div>
     <div class="footer-copy">© 2026 Turbo Wit. All rights reserved.</div>
   </div>
 </footer>
 
+<script>
+function setLang(lang) {
+  localStorage.setItem('tw_lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.style.display = lang === 'en' ? '' : 'none';
+  });
+  document.querySelectorAll('[data-ja]').forEach(el => {
+    el.style.display = lang === 'ja' ? '' : 'none';
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+}
+(function() {
+  const saved = localStorage.getItem('tw_lang') || 'en';
+  setLang(saved);
+})();
+</script>
 </body>
 </html>
