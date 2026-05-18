@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,8 @@
   :root {
     --black: #0a0a0a;
     --white: #f8f8f6;
-    --gray-light: #e8e8e4;
-    --gray-mid: #9a9a94;
+    --gray-light: #d8d8d4;
+    --gray-mid: #666660;
     --accent: #1a1a1a;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --mono: 'DM Mono', monospace;
@@ -30,19 +30,16 @@
     cursor: default;
   }
 
-  /* Chess pattern background */
   .chess-bg {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 0;
     opacity: 0.025;
-    background-image:
-      repeating-conic-gradient(var(--black) 0% 25%, transparent 0% 50%);
+    background-image: repeating-conic-gradient(var(--black) 0% 25%, transparent 0% 50%);
     background-size: 48px 48px;
     pointer-events: none;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -66,7 +63,7 @@
   }
 
   .nav-logo span {
-    font-weight: 300;
+    font-weight: 400;
     color: var(--gray-mid);
   }
 
@@ -81,7 +78,7 @@
     font-size: 0.72rem;
     font-weight: 400;
     letter-spacing: 0.12em;
-    color: #555;
+    color: #444;
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.2s;
@@ -89,7 +86,6 @@
 
   .nav-links a:hover { color: var(--black); }
 
-  /* HERO */
   .hero {
     position: relative;
     z-index: 1;
@@ -105,7 +101,7 @@
   .hero-eyebrow {
     font-family: var(--mono);
     font-size: 0.68rem;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gray-mid);
@@ -126,7 +122,7 @@
   .hero-title {
     font-family: var(--serif);
     font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.01em;
     color: var(--black);
@@ -141,10 +137,10 @@
 
   .hero-sub {
     font-family: var(--mono);
-    font-size: 0.82rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--gray-mid);
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 2;
+    color: #444;
     max-width: 480px;
     letter-spacing: 0.04em;
   }
@@ -159,7 +155,6 @@
     background: linear-gradient(to bottom, transparent, var(--gray-light), transparent);
   }
 
-  /* APPS SECTION */
   .section {
     position: relative;
     z-index: 1;
@@ -170,10 +165,11 @@
 
   .section-label {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.68rem;
+    font-weight: 400;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gray-mid);
+    color: #444;
     margin-bottom: 4rem;
     display: flex;
     align-items: center;
@@ -187,7 +183,6 @@
     background: var(--gray-light);
   }
 
-  /* App cards */
   .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -207,7 +202,8 @@
 
   .app-card-num {
     font-family: var(--mono);
-    font-size: 0.6rem;
+    font-size: 0.62rem;
+    font-weight: 400;
     letter-spacing: 0.2em;
     color: var(--gray-light);
     margin-bottom: 2rem;
@@ -243,26 +239,27 @@
 
   .app-card-desc {
     font-family: var(--mono);
-    font-size: 0.72rem;
-    font-weight: 300;
+    font-size: 0.75rem;
+    font-weight: 400;
     line-height: 1.9;
-    color: var(--gray-mid);
+    color: #444;
     letter-spacing: 0.04em;
     transition: color 0.25s;
   }
 
-  .app-card:hover .app-card-desc { color: #777; }
+  .app-card:hover .app-card-desc { color: #888; }
 
   .app-card-tag {
     display: inline-block;
     margin-top: 2rem;
     font-family: var(--mono);
     font-size: 0.6rem;
+    font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     padding: 0.35rem 0.9rem;
     border: 1px solid var(--gray-light);
-    color: var(--gray-mid);
+    color: #444;
     transition: border-color 0.25s, color 0.25s;
   }
 
@@ -276,7 +273,6 @@
     text-decoration: none;
   }
 
-  /* PHILOSOPHY */
   .philosophy {
     border-top: 1px solid var(--gray-light);
     border-bottom: 1px solid var(--gray-light);
@@ -299,17 +295,18 @@
   .philosophy-label {
     font-family: var(--mono);
     font-size: 0.65rem;
+    font-weight: 400;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #555;
+    color: #888;
     margin-bottom: 2.5rem;
   }
 
   .philosophy-quote {
     font-family: var(--serif);
     font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 300;
-    line-height: 1.3;
+    font-weight: 400;
+    line-height: 1.4;
     color: var(--white);
   }
 
@@ -320,16 +317,15 @@
 
   .philosophy-body {
     font-family: var(--mono);
-    font-size: 0.75rem;
-    font-weight: 300;
+    font-size: 0.78rem;
+    font-weight: 400;
     line-height: 2;
-    color: #777;
+    color: #aaa;
     letter-spacing: 0.04em;
   }
 
   .philosophy-body p + p { margin-top: 1.5rem; }
 
-  /* CONTACT / FOOTER */
   footer {
     position: relative;
     z-index: 1;
@@ -347,20 +343,18 @@
   .footer-brand {
     font-family: var(--serif);
     font-size: 2.5rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--gray-light);
     letter-spacing: 0.05em;
   }
 
-  .footer-info {
-    text-align: right;
-  }
+  .footer-info { text-align: right; }
 
   .footer-email {
     font-family: var(--mono);
     font-size: 0.75rem;
-    font-weight: 300;
-    color: var(--gray-mid);
+    font-weight: 400;
+    color: #444;
     letter-spacing: 0.08em;
     text-decoration: none;
     display: block;
@@ -383,7 +377,7 @@
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #555;
+    color: #444;
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.2s;
@@ -394,11 +388,11 @@
   .footer-copy {
     font-family: var(--mono);
     font-size: 0.62rem;
+    font-weight: 400;
     color: var(--gray-mid);
     letter-spacing: 0.1em;
   }
 
-  /* Animations */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -408,7 +402,6 @@
   .hero-title   { animation: fadeUp 0.8s 0.1s ease both; }
   .hero-sub     { animation: fadeUp 0.8s 0.2s ease both; }
 
-  /* Hamburger */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -439,7 +432,7 @@
   .mobile-menu a {
     font-family: var(--serif);
     font-size: 2.2rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--black);
     text-decoration: none;
     letter-spacing: 0.05em;
@@ -450,6 +443,7 @@
     right: 1.5rem;
     font-family: var(--mono);
     font-size: 0.7rem;
+    font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--gray-mid);
@@ -458,33 +452,6 @@
     cursor: pointer;
   }
 
-  /* Lang toggle */
-  .lang-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    border: 1px solid var(--gray-light);
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-  }
-  .lang-toggle button {
-    padding: 0.3rem 0.6rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--gray-mid);
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    transition: all 0.2s;
-  }
-  .lang-toggle button.active {
-    background: var(--black);
-    color: var(--white);
-  }
-
-  /* Mobile */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -506,21 +473,15 @@
 <nav>
   <a href="/" class="nav-logo">Turbo<span>Wit</span></a>
   <ul class="nav-links">
-    <li><a href="#apps" data-en="Apps" data-ja="アプリ">Apps</a></li>
-    <li><a href="#philosophy" data-en="About" data-ja="について">About</a></li>
-    <li><a href="/privacy" data-en="Privacy" data-ja="プライバシー">Privacy</a></li>
-    <li><a href="/legal" data-en="Legal" data-ja="特商法">Legal</a></li>
-    <li><a href="mailto:hello@turbowit.com" data-en="Contact" data-ja="お問い合わせ">Contact</a></li>
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#philosophy">About</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/legal">Legal</a></li>
+    <li><a href="mailto:hello@turbowit.com">Contact</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:1rem;">
-    <div class="lang-toggle">
-      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-      <button id="btn-ja" onclick="setLang('ja')">JP</button>
-    </div>
-    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="メニューを開く">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu" onclick="document.getElementById('mobileMenu').classList.remove('open')">
@@ -535,22 +496,18 @@
 <section class="hero">
   <div class="hero-eyebrow">TurboWit — Kyoto, Japan</div>
   <h1 class="hero-title">
-    <span data-en>Apps for drivers<br>who <em>remember</em><br>every road.</span>
-    <span data-ja style="display:none">Your car.<br><em>Your life.</em></span>
+    Drive on.<br><em>Turbo your life.</em>
   </h1>
   <p class="hero-sub">
-    <span data-en>We build tools for car enthusiasts —<br>
-    to record drives, explore routes,<br>
-    and turn every journey into something lasting.</span>
-    <span data-ja style="display:none">車は、体験の入口。<br>
-    走った道が記憶になり、記憶が人を繋ぐ。<br>
-    人が繋がることで、また誰かが走り出す。</span>
+    The drive starts here.<br>
+    Together, we go further.<br>
+    The heart keeps running.
   </p>
   <div class="hero-rule" aria-hidden="true"></div>
 </section>
 
 <section class="section" id="apps">
-  <div class="section-label"><span data-en>Our apps</span><span data-ja style="display:none">The drive starts here.</span></div>
+  <div class="section-label">Our apps</div>
 
   <div class="apps-grid">
     <a href="https://cacherecord.vercel.app" class="app-card-link" target="_blank" rel="noopener">
@@ -559,8 +516,8 @@
         <div class="app-card-icon">⬛</div>
         <div class="app-card-name">CacheRecord</div>
         <p class="app-card-desc">
-          <span data-en>GPS drive logger for car enthusiasts.<br>Record, pin, and revisit every route.<br>Your journeys become your archive.</span>
-          <span data-ja style="display:none">Your car remembers.<br>走った道は、消えない。<br>あなたのドライブが、いつもあなたと共にある。</span>
+          Your car remembers.<br>
+          Your past drives, always with you.
         </p>
         <span class="app-card-tag">PWA · Web App</span>
       </div>
@@ -571,21 +528,21 @@
       <div class="app-card-icon">🎵</div>
       <div class="app-card-name">RetroSpecAna</div>
       <p class="app-card-desc">
-        <span data-en>Spectrum analyzer for audiophiles.<br>Visualize music in real time.<br>Android app.</span>
-        <span data-ja style="display:none">The cockpit, a new world.<br>音を、見る。走る車内で、<br>もう一つの感覚が目覚める。</span>
+        Your drive, amplified.<br>
+        Feel the beat. Drive on.
       </p>
-      <span class="app-card-tag"><span data-en>Android · Coming Soon</span><span data-ja style="display:none">Android · 近日公開</span></span>
+      <span class="app-card-tag">Android · Coming Soon</span>
     </div>
 
     <div class="app-card">
       <div class="app-card-num">03</div>
       <div class="app-card-icon">◻️</div>
-      <div class="app-card-name"><span data-en>More to come</span><span data-ja style="display:none">More to come</span></div>
+      <div class="app-card-name">More to come</div>
       <p class="app-card-desc">
-        <span data-en>We are building tools slowly<br>and with care. One at a time.<br>Stay tuned.</span>
-        <span data-ja style="display:none">Where the drive never ends.<br>エコシステムはまだ途中。<br>一つずつ、確かに。</span>
+        More roads ahead.<br>
+        Stay tuned.
       </p>
-      <span class="app-card-tag"><span data-en>In Development</span><span data-ja style="display:none">開発中</span></span>
+      <span class="app-card-tag">In Development</span>
     </div>
   </div>
 </section>
@@ -593,22 +550,19 @@
 <div class="philosophy" id="philosophy">
   <div class="philosophy-inner">
     <div>
-      <div class="philosophy-label"><span data-en>Our philosophy</span><span data-ja style="display:none">TurboWitについて</span></div>
+      <div class="philosophy-label">Our philosophy</div>
       <blockquote class="philosophy-quote">
-        <span data-en>"Build slowly.<br>Build <em>honestly</em>.<br>Build things you<br>love yourself."</span>
-        <span data-ja style="display:none">Drive on.<br><em>Turbo your life.</em></span>
+        Well-defined.<br>
+        Intentional.<br>
+        Timeless.
       </blockquote>
     </div>
     <div class="philosophy-body">
-      <span data-en>
-        <p>TurboWit is a one-person studio based in Kyoto, Japan, building apps for drivers and enthusiasts.</p>
-        <p>We don't chase trends. We build tools we'd use ourselves — obsessing over details that most apps overlook.</p>
-        <p>Every product is designed to last. No dark patterns, no unnecessary complexity. Just well-made software for people who care about the craft.</p>
-      </span>
-      <span data-ja style="display:none">
-        <p>TurboWitは、京都を拠点とする個人スタジオです。</p>
-        <p>ガレージから、世界が始まる。道の先は、まだ知らない。みんなで走れば、もっと遠くへ。</p>
-      </span>
+      <p>TurboWit is a one-person studio based in Kyoto, Japan.</p>
+      <p>We build apps for drivers — people who love the road, the machine, and the moments in between.</p>
+      <p>Every product is made with care, one at a time.<br>No shortcuts. No unnecessary complexity.</p>
+      <p>Questions or feedback? We'd love to hear from you.<br>
+      <a href="mailto:hello@turbowit.com" style="color:#ccc;text-underline-offset:3px;">hello@turbowit.com</a></p>
     </div>
   </div>
 </div>
@@ -618,30 +572,12 @@
   <div class="footer-info">
     <a href="mailto:hello@turbowit.com" class="footer-email">hello@turbowit.com</a>
     <div class="footer-links">
-      <a href="/privacy"><span data-en>Privacy Policy</span><span data-ja style="display:none">プライバシーポリシー</span></a>
-      <a href="/legal"><span data-en>Legal</span><span data-ja style="display:none">特商法表記</span></a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/legal">Legal</a>
     </div>
     <div class="footer-copy">© 2026 Turbo Wit. All rights reserved.</div>
   </div>
 </footer>
 
-<script>
-function setLang(lang) {
-  localStorage.setItem('tw_lang', lang);
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.style.display = lang === 'en' ? '' : 'none';
-  });
-  document.querySelectorAll('[data-ja]').forEach(el => {
-    el.style.display = lang === 'ja' ? '' : 'none';
-  });
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
-  document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
-}
-(function() {
-  const saved = localStorage.getItem('tw_lang') || 'en';
-  setLang(saved);
-})();
-</script>
 </body>
 </html>

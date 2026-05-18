@@ -29,8 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
-    height: 64px;
+    padding: 1.25rem 3rem;
     background: rgba(248,248,246,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--gray-light);
@@ -135,6 +134,29 @@
 
   .contact-block p { margin-bottom: 0.25rem; }
 
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gray-light);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+  .lang-toggle button {
+    padding: 0.3rem 0.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-mid);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+  .lang-toggle button.active {
+    background: var(--black);
+    color: var(--white);
+  }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .container { padding: 3rem 1.5rem 5rem; }
@@ -145,142 +167,159 @@
 
 <nav>
   <a href="/" class="nav-logo">Turbo<span>Wit</span></a>
-  <a href="/" class="nav-back">← Back to Home</a>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-ja" onclick="setLang('ja')">JP</button>
+    </div>
+    <a href="/" class="nav-back"><span data-en>← Back to Home</span><span data-ja style="display:none">← ホームへ</span></a>
+  </div>
 </nav>
 
 <div class="container">
   <div class="page-label">Legal</div>
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: May 17, 2026</p>
+  <h1><span data-en>Privacy Policy</span><span data-ja style="display:none">プライバシーポリシー</span></h1>
+  <p class="updated"><span data-en>Last updated: May 17, 2026</span><span data-ja style="display:none">最終更新日：2026年5月17日</span></p>
 
   <p>
-    This Privacy Policy describes how TurboWit ("we," "us," or "our") collects, uses, and protects
-    information when you use our applications and services, including CacheRecord and RetroSpecAna.
+    <span data-en>This Privacy Policy describes how TurboWit ("we," "us," or "our") collects, uses, and protects
+    information when you use our applications and services, including CacheRecord and RetroSpecAna.</span>
+    <span data-ja style="display:none">このプライバシーポリシーは、TurboWit（以下「当社」）がCacheRecordおよびRetroSpecAnaを含むアプリおよびサービスの利用において、情報をどのように収集・利用・保護するかを説明するものです。</span>
   </p>
 
-  <h2>1. Information We Collect</h2>
+  <h2><span data-en>1. Information We Collect</span><span data-ja style="display:none">1. 収集する情報</span></h2>
 
-  <p><strong>Location Data (GPS)</strong></p>
+  <p><strong><span data-en>Location Data (GPS)</span><span data-ja style="display:none">位置情報（GPS）</span></strong></p>
   <p>
-    CacheRecord uses your device's GPS to record driving routes. Location data is processed on your
+    <span data-en>CacheRecord uses your device's GPS to record driving routes. Location data is processed on your
     device and, when you choose to save a log, stored in our database associated with your account.
-    We do not collect location data in the background without your explicit action to start recording.
+    We do not collect location data in the background without your explicit action to start recording.</span>
+    <span data-ja style="display:none">CacheRecordは走行ルートを記録するためにデバイスのGPSを使用します。位置情報はデバイス上で処理され、ログを保存する操作をした際にアカウントに紐づいてデータベースに保存されます。記録開始操作なしにバックグラウンドで位置情報を収集することはありません。</span>
   </p>
 
-  <p><strong>Account Information</strong></p>
+  <p><strong><span data-en>Account Information</span><span data-ja style="display:none">アカウント情報</span></strong></p>
   <p>
-    When you create an account, we collect your email address for authentication purposes.
+    <span data-en>When you create an account, we collect your email address for authentication purposes.
     We do not collect your name, phone number, or any other personally identifiable information
-    unless you voluntarily provide it.
+    unless you voluntarily provide it.</span>
+    <span data-ja style="display:none">アカウント作成時に、認証目的でメールアドレスを収集します。お名前・電話番号などの個人情報は、お客様が自発的に提供しない限り収集しません。</span>
   </p>
 
-  <p><strong>Usage Data</strong></p>
+  <p><strong><span data-en>Usage Data</span><span data-ja style="display:none">利用データ</span></strong></p>
   <p>
-    We may collect basic usage information such as app version, device type, and error logs
-    to improve our services. This data is anonymized and does not personally identify you.
+    <span data-en>We may collect basic usage information such as app version, device type, and error logs
+    to improve our services. This data is anonymized and does not personally identify you.</span>
+    <span data-ja style="display:none">サービス改善のため、アプリのバージョン・デバイスの種類・エラーログなどの基本的な利用情報を収集する場合があります。これらのデータは匿名化されており、個人を特定しません。</span>
   </p>
 
-  <p><strong>Microphone / Audio</strong></p>
+  <p><strong><span data-en>Microphone / Audio</span><span data-ja style="display:none">マイク・音声</span></strong></p>
   <p>
-    RetroSpecAna accesses your device's microphone solely to perform real-time audio spectrum
+    <span data-en>RetroSpecAna accesses your device's microphone solely to perform real-time audio spectrum
     analysis. Audio is processed locally on your device and is never recorded, stored, or
-    transmitted to our servers.
+    transmitted to our servers.</span>
+    <span data-ja style="display:none">RetroSpecAnaはリアルタイムの音声スペクトラム解析のみを目的としてマイクにアクセスします。音声はデバイス上でのみ処理され、録音・保存・サーバーへの送信は一切行いません。</span>
   </p>
 
-  <h2>2. How We Use Your Information</h2>
+  <h2><span data-en>2. How We Use Your Information</span><span data-ja style="display:none">2. 情報の利用目的</span></h2>
 
   <ul>
-    <li>To provide and operate our applications</li>
-    <li>To save and sync your drive logs across devices (when signed in)</li>
-    <li>To authenticate your account and maintain security</li>
-    <li>To improve app performance and fix bugs</li>
-    <li>To send you important service-related notifications (if applicable)</li>
+    <li><span data-en>To provide and operate our applications</span><span data-ja style="display:none">アプリの提供・運営のため</span></li>
+    <li><span data-en>To save and sync your drive logs across devices (when signed in)</span><span data-ja style="display:none">ログイン時のドライブログの保存・同期のため</span></li>
+    <li><span data-en>To authenticate your account and maintain security</span><span data-ja style="display:none">アカウント認証とセキュリティ維持のため</span></li>
+    <li><span data-en>To improve app performance and fix bugs</span><span data-ja style="display:none">アプリのパフォーマンス改善・バグ修正のため</span></li>
+    <li><span data-en>To send you important service-related notifications (if applicable)</span><span data-ja style="display:none">重要なサービス通知の送信のため（該当する場合）</span></li>
   </ul>
 
-  <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+  <p><span data-en>We do not sell, rent, or share your personal information with third parties for marketing purposes.</span><span data-ja style="display:none">マーケティング目的で第三者に個人情報を販売・貸与・共有することはありません。</span></p>
 
-  <h2>3. Data Storage and Security</h2>
+  <h2><span data-en>3. Data Storage and Security</span><span data-ja style="display:none">3. データの保存とセキュリティ</span></h2>
 
   <p>
-    Your data is stored using Supabase, a secure cloud database service hosted in the Tokyo region.
+    <span data-en>Your data is stored using Supabase, a secure cloud database service hosted in the Tokyo region.
     We implement reasonable technical and organizational measures to protect your information from
-    unauthorized access, loss, or disclosure.
+    unauthorized access, loss, or disclosure.</span>
+    <span data-ja style="display:none">データは東京リージョンでホストされているセキュアなクラウドデータベースサービスSupabaseを使用して保存されます。不正アクセス・損失・漏洩から情報を保護するための合理的な技術的・組織的措置を講じています。</span>
   </p>
 
   <p>
-    Guest mode data (when you use CacheRecord without signing in) is stored locally on your device
-    only and is not transmitted to our servers.
+    <span data-en>Guest mode data (when you use CacheRecord without signing in) is stored locally on your device
+    only and is not transmitted to our servers.</span>
+    <span data-ja style="display:none">ゲストモードのデータ（ログインせずにCacheRecordを使用した場合）はデバイス上にのみ保存され、サーバーには送信されません。</span>
   </p>
 
-  <h2>4. Third-Party Services</h2>
+  <h2><span data-en>4. Third-Party Services</span><span data-ja style="display:none">4. 第三者サービス</span></h2>
 
-  <p>Our apps use the following third-party services:</p>
+  <p><span data-en>Our apps use the following third-party services:</span><span data-ja style="display:none">当社のアプリは以下の第三者サービスを使用しています：</span></p>
 
   <ul>
-    <li><strong>Supabase</strong> — Database and authentication (supabase.com)</li>
-    <li><strong>Vercel</strong> — Web hosting (vercel.com)</li>
-    <li><strong>OpenStreetMap / Leaflet</strong> — Map tiles and rendering (openstreetmap.org)</li>
-    <li><strong>Mapbox</strong> — Map imagery for sharing cards (mapbox.com)</li>
-    <li><strong>Google AdSense / AdMob</strong> — Advertising (google.com/adsense)</li>
+    <li><strong>Supabase</strong> — <span data-en>Database and authentication</span><span data-ja style="display:none">データベースと認証</span></li>
+    <li><strong>Vercel</strong> — <span data-en>Web hosting</span><span data-ja style="display:none">Webホスティング</span></li>
+    <li><strong>OpenStreetMap / Leaflet</strong> — <span data-en>Map tiles and rendering</span><span data-ja style="display:none">地図タイルとレンダリング</span></li>
+    <li><strong>Mapbox</strong> — <span data-en>Map imagery for sharing cards</span><span data-ja style="display:none">シェアカード用地図画像</span></li>
+    <li><strong>Google AdSense / AdMob</strong> — <span data-en>Advertising</span><span data-ja style="display:none">広告配信</span></li>
   </ul>
 
   <p>
-    These services have their own privacy policies. We encourage you to review them.
+    <span data-en>These services have their own privacy policies. We encourage you to review them.
     Google's advertising services may use cookies and device identifiers to serve
-    personalized ads. You can opt out via Google's Ad Settings.
+    personalized ads. You can opt out via Google's Ad Settings.</span>
+    <span data-ja style="display:none">これらのサービスはそれぞれのプライバシーポリシーを持っています。Googleの広告サービスはパーソナライズ広告のためにCookieやデバイス識別子を使用する場合があります。Googleの広告設定からオプトアウトできます。</span>
   </p>
 
-  <h2>5. Cookies and Local Storage</h2>
+  <h2><span data-en>5. Cookies and Local Storage</span><span data-ja style="display:none">5. CookieとローカルStorage</span></h2>
 
   <p>
-    Our web applications use localStorage to store your preferences (such as language settings)
+    <span data-en>Our web applications use localStorage to store your preferences (such as language settings)
     and session data locally on your device. We may also use cookies for authentication purposes.
-    These are essential for the app to function and cannot be disabled.
+    These are essential for the app to function and cannot be disabled.</span>
+    <span data-ja style="display:none">Webアプリは言語設定などの環境設定やセッションデータをデバイスのlocalStorageに保存します。認証目的でCookieを使用する場合もあります。これらはアプリの動作に必須であり、無効にすることはできません。</span>
   </p>
 
-  <h2>6. Data Retention</h2>
+  <h2><span data-en>6. Data Retention</span><span data-ja style="display:none">6. データの保持期間</span></h2>
 
   <p>
-    Your account and associated data are retained for as long as your account is active.
+    <span data-en>Your account and associated data are retained for as long as your account is active.
     You may request deletion of your account and all associated data by contacting us at
     <a href="mailto:hello@turbowit.com">hello@turbowit.com</a>.
-    We will process deletion requests within 30 days.
+    We will process deletion requests within 30 days.</span>
+    <span data-ja style="display:none">アカウントおよび関連データはアカウントが有効な間保持されます。アカウントおよび関連データの削除をご希望の場合は<a href="mailto:hello@turbowit.com">hello@turbowit.com</a>までご連絡ください。30日以内に対応します。</span>
   </p>
 
-  <h2>7. Children's Privacy</h2>
+  <h2><span data-en>7. Children's Privacy</span><span data-ja style="display:none">7. 子どものプライバシー</span></h2>
 
   <p>
-    Our services are not directed to children under the age of 13. We do not knowingly collect
+    <span data-en>Our services are not directed to children under the age of 13. We do not knowingly collect
     personal information from children. If you believe we have inadvertently collected information
-    from a child, please contact us immediately.
+    from a child, please contact us immediately.</span>
+    <span data-ja style="display:none">当社のサービスは13歳未満の子どもを対象としていません。子どもから意図せず個人情報を収集したと思われる場合は、直ちにご連絡ください。</span>
   </p>
 
-  <h2>8. Your Rights</h2>
+  <h2><span data-en>8. Your Rights</span><span data-ja style="display:none">8. お客様の権利</span></h2>
 
-  <p>You have the right to:</p>
+  <p><span data-en>You have the right to:</span><span data-ja style="display:none">お客様は以下の権利を有します：</span></p>
   <ul>
-    <li>Access the personal data we hold about you</li>
-    <li>Request correction of inaccurate data</li>
-    <li>Request deletion of your data</li>
-    <li>Export your data (drive logs can be exported as GPX files)</li>
-    <li>Withdraw consent at any time</li>
+    <li><span data-en>Access the personal data we hold about you</span><span data-ja style="display:none">当社が保有する個人データへのアクセス</span></li>
+    <li><span data-en>Request correction of inaccurate data</span><span data-ja style="display:none">不正確なデータの訂正請求</span></li>
+    <li><span data-en>Request deletion of your data</span><span data-ja style="display:none">データの削除請求</span></li>
+    <li><span data-en>Export your data (drive logs can be exported as GPX files)</span><span data-ja style="display:none">データのエクスポート（ドライブログはGPXファイルとして書き出し可能）</span></li>
+    <li><span data-en>Withdraw consent at any time</span><span data-ja style="display:none">同意の撤回</span></li>
   </ul>
 
-  <h2>9. Changes to This Policy</h2>
+  <h2><span data-en>9. Changes to This Policy</span><span data-ja style="display:none">9. ポリシーの変更</span></h2>
 
   <p>
-    We may update this Privacy Policy from time to time. We will notify you of significant changes
+    <span data-en>We may update this Privacy Policy from time to time. We will notify you of significant changes
     by updating the "Last updated" date at the top of this page. Continued use of our services
-    after changes constitutes acceptance of the updated policy.
+    after changes constitutes acceptance of the updated policy.</span>
+    <span data-ja style="display:none">本プライバシーポリシーは随時更新される場合があります。重要な変更はページ上部の「最終更新日」の更新によってお知らせします。変更後もサービスを継続して利用された場合、更新後のポリシーに同意したものとみなします。</span>
   </p>
 
-  <h2>10. Contact Us</h2>
+  <h2><span data-en>10. Contact Us</span><span data-ja style="display:none">10. お問い合わせ</span></h2>
 
-  <p>If you have any questions about this Privacy Policy or your data, please contact us:</p>
+  <p><span data-en>If you have any questions about this Privacy Policy or your data, please contact us:</span><span data-ja style="display:none">本プライバシーポリシーやデータに関するご質問は以下までご連絡ください：</span></p>
 
   <div class="contact-block">
-    <p><strong>TurboWit</strong></p>
-    <p>Turbo Wit</p>
+    <p><strong>Turbo Wit</strong></p>
     <p>〒600-8223 京都府京都市下京区七条通油小路東入大黒町227番地 第２キョートビル402</p>
     <p><a href="mailto:hello@turbowit.com">hello@turbowit.com</a></p>
     <p>turbowit.com</p>
@@ -288,5 +327,23 @@
 
 </div>
 
+<script>
+function setLang(lang) {
+  localStorage.setItem('tw_lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.style.display = lang === 'en' ? '' : 'none';
+  });
+  document.querySelectorAll('[data-ja]').forEach(el => {
+    el.style.display = lang === 'ja' ? '' : 'none';
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+}
+(function() {
+  const saved = localStorage.getItem('tw_lang') || 'en';
+  setLang(saved);
+})();
+</script>
 </body>
 </html>
